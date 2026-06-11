@@ -1,0 +1,266 @@
+site_name: ISP Algorithm Handbook — 图像信号处理算法手册
+site_url: https://aiisp.github.io/isp_handbook/
+site_description: >-
+  Open-source bilingual handbook covering Image Signal Processing (ISP)
+  from first principles to LLM-era methods. 125 chapters · Chinese & English.
+site_author: ISP Algorithm Handbook Contributors
+repo_url: https://github.com/AIISP/isp_handbook
+repo_name: AIISP/isp_handbook
+edit_uri: edit/main/
+
+docs_dir: .
+site_dir: site
+
+# Exclude non-documentation files from the build
+exclude_docs: |
+  site/
+  .git/
+  __pycache__/
+  *.pyc
+  environment.yml
+  requirements.txt
+  requirements-docs.txt
+  ROADMAP.md
+  CHANGELOG.md
+  CITATION.cff
+  code/
+  .github/
+  mkdocs.yml
+  docs/
+
+theme:
+  name: material
+  language: zh
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: 切换为深色模式
+    - scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: 切换为浅色模式
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - navigation.instant
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+  font:
+    text: Noto Sans SC
+    code: JetBrains Mono
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+      permalink_title: 链接到此节
+  - attr_list
+  - md_in_html
+  - footnotes
+  - abbr
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - https://cdn.jsdelivr.net/npm/@mdi/font@7/css/materialdesignicons.min.css
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+      separator: '[\s\-\.]+'
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/AIISP/isp_handbook
+      name: GitHub Repository
+
+# Navigation — full chapter listing; 125 chapters across 6 volumes + 10 appendices
+# English versions of all chapters are accessible via README_en.md chapter table
+nav:
+  - 首页 (中文): README_ch.md
+  - Home (English): README_en.md
+  - 前言: PREFACE_ch.md
+  - Preface (EN): PREFACE_en.md
+  - 学习路径: LEARNING_PATHS.md
+  - 工程数字速查: ENGINEERING_NUMBERS.md
+  - 贡献指南: CONTRIBUTING.md
+  - 行为准则: CODE_OF_CONDUCT.md
+  - 致谢: ACKNOWLEDGEMENTS_ch.md
+  - 第一卷 — 成像基础:
+    - ISP流水线概述: part1_imaging_fundamentals/ch01_isp_pipeline_overview/ch01_isp_pipeline_overview_ch.md
+    - 光学基础: part1_imaging_fundamentals/ch02_optics_basics/ch02_optics_basics_ch.md
+    - 传感器物理: part1_imaging_fundamentals/ch03_sensor_physics/ch03_sensor_physics_ch.md
+    - 噪声模型: part1_imaging_fundamentals/ch04_noise_models/ch04_noise_models_ch.md
+    - 颜色科学: part1_imaging_fundamentals/ch05_color_science_basics/ch05_color_science_basics_ch.md
+    - RAW格式与Bayer: part1_imaging_fundamentals/ch06_raw_format_bayer/ch06_raw_format_bayer_ch.md
+    - 动态范围与HDR: part1_imaging_fundamentals/ch07_dynamic_range_hdr/ch07_dynamic_range_hdr_ch.md
+    - 光学像差: part1_imaging_fundamentals/ch08_optics_aberrations/ch08_optics_aberrations_ch.md
+    - 相机系统标定: part1_imaging_fundamentals/ch09_camera_calibration/ch09_camera_calibration_ch.md
+    - ISP SoC架构: part1_imaging_fundamentals/ch10_soc_hardware/ch10_soc_hardware_ch.md
+    - 同色异谱: part1_imaging_fundamentals/ch11_metamerism/ch11_metamerism_ch.md
+    - 深度感知: part1_imaging_fundamentals/ch12_depth_sensing/ch12_depth_sensing_ch.md
+    - 第13章 光场成像: part1_imaging_fundamentals/ch13_plenoptic/ch13_plenoptic_ch.md
+    - 第14章 高光谱成像: part1_imaging_fundamentals/ch14_hyperspectral/ch14_hyperspectral_ch.md
+    - 第15章 无镜头成像: part1_imaging_fundamentals/ch15_lensless/ch15_lensless_ch.md
+    - 第16章 神经形态相机: part1_imaging_fundamentals/ch16_neuromorphic/ch16_neuromorphic_ch.md
+    - 像素合并与分级: part1_imaging_fundamentals/ch17_sensor_binning/ch17_sensor_binning_ch.md
+  - 第二卷 — 传统ISP:
+    - BLC与PDPC: part2_traditional_isp/ch01_blc_pdpc/ch01_blc_pdpc_ch.md
+    - 去马赛克: part2_traditional_isp/ch02_demosaic/ch02_demosaic_ch.md
+    - 空域降噪: part2_traditional_isp/ch03_denoising/ch03_denoising_ch.md
+    - 锐化与边缘增强: part2_traditional_isp/ch04_sharpening/ch04_sharpening_ch.md
+    - 自动白平衡: part2_traditional_isp/ch05_awb/ch05_awb_ch.md
+    - 颜色校正矩阵: part2_traditional_isp/ch06_ccm/ch06_ccm_ch.md
+    - 伽马与色调映射: part2_traditional_isp/ch07_gamma_tonemapping/ch07_gamma_tonemapping_ch.md
+    - 镜头阴影校正: part2_traditional_isp/ch08_lsc/ch08_lsc_ch.md
+    - 颜色空间转换: part2_traditional_isp/ch09_csc_output/ch09_csc_output_ch.md
+    - HDR合帧: part2_traditional_isp/ch10_hdr_merge/ch10_hdr_merge_ch.md
+    - 色彩增强: part2_traditional_isp/ch11_color_enhancement/ch11_color_enhancement_ch.md
+    - 时域降噪: part2_traditional_isp/ch12_temporal_nr/ch12_temporal_nr_ch.md
+    - 数字变焦: part2_traditional_isp/ch13_digital_zoom/ch13_digital_zoom_ch.md
+    - 人脸与肤色增强: part2_traditional_isp/ch14_face_skin_enhancement/ch14_face_skin_enhancement_ch.md
+    - 畸变校正: part2_traditional_isp/ch15_distortion_correction/ch15_distortion_correction_ch.md
+    - 图像编码JPEG/HEIF: part2_traditional_isp/ch16_jpeg_heif_encoding/ch16_jpeg_heif_encoding_ch.md
+    - 场景亮度分析: part2_traditional_isp/ch17_luminance_metering/ch17_luminance_metering_ch.md
+    - 局部色调映射: part2_traditional_isp/ch18_local_tonemapping/ch18_local_tonemapping_ch.md
+    - HDR显示链路: part2_traditional_isp/ch19_hdr_display_pipeline/ch19_hdr_display_pipeline_ch.md
+    - 视频色彩元数据: part2_traditional_isp/ch20_video_color_metadata/ch20_video_color_metadata_ch.md
+    - 宽色域管道: part2_traditional_isp/ch21_wide_color_gamut/ch21_wide_color_gamut_ch.md
+    - 多摄融合: part2_traditional_isp/ch22_multi_camera_fusion/ch22_multi_camera_fusion_ch.md
+    - EIS与OIS: part2_traditional_isp/ch23_eis_ois/ch23_eis_ois_ch.md
+    - 色差校正: part2_traditional_isp/ch24_chromatic_aberration/ch24_chromatic_aberration_ch.md
+    - RAW视频与电影摄影: part2_traditional_isp/ch25_raw_video_cinema/ch25_raw_video_cinema_ch.md
+    - 夜景多帧合成: part2_traditional_isp/ch26_burst_night_mode/ch26_burst_night_mode_ch.md
+    - 计算散景: part2_traditional_isp/ch27_bokeh_portrait/ch27_bokeh_portrait_ch.md
+    - 防频闪: part2_traditional_isp/ch28_anti_banding/ch28_anti_banding_ch.md
+    - 车载ISP: part2_traditional_isp/ch29_automotive_isp/ch29_automotive_isp_ch.md
+    - ISP标定: part2_traditional_isp/ch30_isp_calibration/ch30_isp_calibration_ch.md
+    - ISP Bring-up: part2_traditional_isp/ch31_isp_bringup/ch31_isp_bringup_ch.md
+    - HDR学习路径: part2_traditional_isp/ch32_hdr_reading_guide/ch32_hdr_reading_guide_ch.md
+    - 视频ISP综述: part2_traditional_isp/ch33_video_isp_overview/ch33_video_isp_overview_ch.md
+  - 第三卷 — 深度学习ISP:
+    - DL-ISP综述: part3_dl_isp/ch01_dl_overview/ch01_dl_overview_ch.md
+    - 端到端图像复原: part3_dl_isp/ch02_e2e_restoration/ch02_e2e_restoration_ch.md
+    - 超分辨率: part3_dl_isp/ch03_super_resolution/ch03_super_resolution_ch.md
+    - 风格迁移: part3_dl_isp/ch04_style_transfer/ch04_style_transfer_ch.md
+    - 低照度增强: part3_dl_isp/ch05_llie/ch05_llie_ch.md
+    - AI色调映射: part3_dl_isp/ch06_ai_tonemapping/ch06_ai_tonemapping_ch.md
+    - 扩散模型复原: part3_dl_isp/ch07_diffusion_restoration/ch07_diffusion_restoration_ch.md
+    - 视频降噪: part3_dl_isp/ch08_video_denoising/ch08_video_denoising_ch.md
+    - 压缩感知: part3_dl_isp/ch09_compressed_sensing/ch09_compressed_sensing_ch.md
+    - DL视频ISP: part3_dl_isp/ch10_video_isp/ch10_video_isp_ch.md
+    - DL夜景多帧: part3_dl_isp/ch11_burst_dl_night/ch11_burst_dl_night_ch.md
+    - DL视频防抖: part3_dl_isp/ch12_dl_video_stabilization/ch12_dl_video_stabilization_ch.md
+    - 神经网络散景: part3_dl_isp/ch13_neural_bokeh/ch13_neural_bokeh_ch.md
+    - 端侧NPU部署: part3_dl_isp/ch14_on_device_npu/ch14_on_device_npu_ch.md
+    - NeRF与3DGS: part3_dl_isp/ch15_nerf_3dgs/ch15_nerf_3dgs_ch.md
+    - 生成式RAW到RGB: part3_dl_isp/ch16_generative_raw_rgb/ch16_generative_raw_rgb_ch.md
+    - 自监督ISP: part3_dl_isp/ch17_self_supervised_isp/ch17_self_supervised_isp_ch.md
+    - 全能图像复原: part3_dl_isp/ch18_all_in_one_restoration/ch18_all_in_one_restoration_ch.md
+    - 可逆ISP: part3_dl_isp/ch19_invertible_isp/ch19_invertible_isp_ch.md
+    - DL去噪综述: part3_dl_isp/ch20_dl_denoising_overview/ch20_dl_denoising_overview_ch.md
+    - 深度学习图像去噪: part3_dl_isp/ch21_image_denoising_dl/ch21_image_denoising_dl_ch.md
+    - 通用图像复原: part3_dl_isp/ch22_universal_restoration/ch22_universal_restoration_ch.md
+    - 参考图像精修: part3_dl_isp/ch23_reference_retouching/ch23_reference_retouching_ch.md
+    - 神经ISP流水线: part3_dl_isp/ch24_neural_isp_pipeline/ch24_neural_isp_pipeline_ch.md
+  - 第四卷 — 系统工程与IQA:
+    - 3A控制系统: part4_system_iqa/ch01_3a_system/ch01_3a_system_ch.md
+    - 自动曝光: part4_system_iqa/ch02_ae_fundamentals/ch02_ae_fundamentals_ch.md
+    - 自动对焦: part4_system_iqa/ch03_af_fundamentals/ch03_af_fundamentals_ch.md
+    - 感知IQA: part4_system_iqa/ch04_perceptual_iqa/ch04_perceptual_iqa_ch.md
+    - 盲IQA: part4_system_iqa/ch05_blind_iqa/ch05_blind_iqa_ch.md
+    - 任务驱动ISP: part4_system_iqa/ch06_task_driven_isp/ch06_task_driven_isp_ch.md
+    - 计算摄影: part4_system_iqa/ch07_computational_photography/ch07_computational_photography_ch.md
+    - IQA系统工程: part4_system_iqa/ch08_iqa_system/ch08_iqa_system_ch.md
+    - 3A进阶专题: part4_system_iqa/ch09_3a_advanced_topics/ch09_3a_advanced_topics_ch.md
+    - ISP测试工具链: part4_system_iqa/ch10_isp_testing_toolchain/ch10_isp_testing_toolchain_ch.md
+    - 人类视觉系统模型: part4_system_iqa/ch11_hvs_models/ch11_hvs_models_ch.md
+    - SoC硬件深度解析: part4_system_iqa/ch12_soc_hardware/ch12_soc_hardware_ch.md
+    - AR/VR ISP: part4_system_iqa/ch13_ar_vr_isp/ch13_ar_vr_isp_ch.md
+    - 多摄系统架构: part4_system_iqa/ch14_multi_camera_architecture/ch14_multi_camera_architecture_ch.md
+    - 实时处理约束: part4_system_iqa/ch15_realtime_constraints/ch15_realtime_constraints_ch.md
+    - 视频ISP工程: part4_system_iqa/ch16_video_isp_engineering/ch16_video_isp_engineering_ch.md
+    - ISP调参工作流: part4_system_iqa/ch17_isp_tuning_workflow/ch17_isp_tuning_workflow_ch.md
+    - Camera HAL架构: part4_system_iqa/ch18_camera_hal_architecture/ch18_camera_hal_architecture_ch.md
+    - 强化学习ISP: part4_system_iqa/ch19_drl_isp/ch19_drl_isp_ch.md
+    - ISP参数管理: part4_system_iqa/ch20_isp_parameter_management/ch20_isp_parameter_management_ch.md
+    - ISP伪影排查: part4_system_iqa/ch21_isp_artifact_debug/ch21_isp_artifact_debug_ch.md
+    - ISP功耗优化: part4_system_iqa/ch22_isp_power_optimization/ch22_isp_power_optimization_ch.md
+    - 场景自适应参数: part4_system_iqa/ch23_scene_adaptive_params/ch23_scene_adaptive_params_ch.md
+  - 第五卷 — LLM时代:
+    - 视觉基础模型: part5_llm_era/ch01_foundation_models/ch01_foundation_models_ch.md
+    - AIGC与生成式增强: part5_llm_era/ch02_aigc/ch02_aigc_ch.md
+    - LLM辅助ISP调参: part5_llm_era/ch03_llm_isp_tuning/ch03_llm_isp_tuning_ch.md
+    - 多模态大模型: part5_llm_era/ch04_multimodal_models/ch04_multimodal_models_ch.md
+    - 文本引导图像复原: part5_llm_era/ch05_text_guided_restoration/ch05_text_guided_restoration_ch.md
+    - Prompt驱动ISP: part5_llm_era/ch06_prompt_driven_isp/ch06_prompt_driven_isp_ch.md
+    - RAW域基础模型: part5_llm_era/ch07_raw_foundation_models/ch07_raw_foundation_models_ch.md
+    - LLM相机调参: part5_llm_era/ch08_llm_camera_tuning/ch08_llm_camera_tuning_ch.md
+    - In-Context学习: part5_llm_era/ch09_in_context_learning/ch09_in_context_learning_ch.md
+    - 世界模型与成像: part5_llm_era/ch10_world_models/ch10_world_models_ch.md
+    - 合成数据生成: part5_llm_era/ch11_synthetic_data/ch11_synthetic_data_ch.md
+    - 隐私保护摄影: part5_llm_era/ch12_privacy_photography/ch12_privacy_photography_ch.md
+    - 端侧AI部署: part5_llm_era/ch13_edge_ai/ch13_edge_ai_ch.md
+    - 具身智能与成像: part5_llm_era/ch14_embodied_ai/ch14_embodied_ai_ch.md
+  - 第六卷 — 消费级摄影:
+    - 消费摄影演进: part6_consumer_photography/ch01_consumer_photography_evolution/ch01_consumer_photography_evolution_ch.md
+    - Google Night Sight与HDR+: part6_consumer_photography/ch02_night_sight_hdrplus/ch02_night_sight_hdrplus_ch.md
+    - Apple Deep Fusion: part6_consumer_photography/ch03_apple_deep_fusion/ch03_apple_deep_fusion_ch.md
+    - 手机ISP芯片: part6_consumer_photography/ch04_mobile_isp_chips/ch04_mobile_isp_chips_ch.md
+    - 华为RYYB传感器: part6_consumer_photography/ch05_huawei_ryyb/ch05_huawei_ryyb_ch.md
+    - 三星ISOCELL: part6_consumer_photography/ch06_samsung_isocell/ch06_samsung_isocell_ch.md
+    - 人像模式横评: part6_consumer_photography/ch07_portrait_mode_comparison/ch07_portrait_mode_comparison_ch.md
+    - 计算摄影的审美边界: part6_consumer_photography/ch08_aesthetic_boundaries/ch08_aesthetic_boundaries_ch.md
+    - 手机视频ISP: part6_consumer_photography/ch09_smartphone_video_isp/ch09_smartphone_video_isp_ch.md
+    - 计算变焦: part6_consumer_photography/ch10_computational_zoom/ch10_computational_zoom_ch.md
+    - 屏下摄像头: part6_consumer_photography/ch11_under_display_camera/ch11_under_display_camera_ch.md
+    - 未来成像与XR: part6_consumer_photography/ch12_future_imaging_xr/ch12_future_imaging_xr_ch.md
+    - 可穿戴设备ISP: part6_consumer_photography/ch13_wearable_isp/ch13_wearable_isp_ch.md
+    - 开源ISP综述: part6_consumer_photography/ch14_opensource_isp_review/ch14_opensource_isp_review_ch.md
+  - 附录:
+    - 数学基础: appendix/appendix_A_math_ch.md
+    - 标定卡与测试图: appendix/appendix_B_calibration_cards_ch.md
+    - SoC平台对比: appendix/appendix_C_soc_comparison_ch.md
+    - 开源工具库: appendix/appendix_D_open_source_tools_ch.md
+    - 数据集: appendix/appendix_E_datasets_ch.md
+    - 基准测试: appendix/appendix_F_benchmarks_ch.md
+    - 符号与缩写表: appendix/appendix_G_notation_ch.md
+    - 参考文献: appendix/appendix_H_references_ch.md
+    - 特殊成像系统: appendix/appendix_I_special_imaging_systems_ch.md
+    - 开发环境搭建: appendix/appendix_J_environment_setup_ch.md
