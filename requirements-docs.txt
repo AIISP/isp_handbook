@@ -1,0 +1,16 @@
+# ISP Algorithm Handbook — MkDocs documentation dependencies
+# Used by: .github/workflows/docs.yml (CI/CD), local preview
+# Install: pip install -r requirements-docs.txt
+# Local preview: mkdocs serve
+
+# Core docs framework
+mkdocs==1.6.1
+
+# Material theme
+mkdocs-material==9.7.6
+
+# Markdown extensions used in mkdocs.yml
+pymdown-extensions==10.21.3
+
+# Required by mkdocs-material for image processing
+Pillow>=10.0,<13.0
